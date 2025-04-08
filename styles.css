@@ -1,0 +1,43 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    padding: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#duck-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@keyframes fly {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(500px, -500px); }
+}
+
+.duck {
+    position: absolute;
+    animation: fly 5s infinite linear;
+}
