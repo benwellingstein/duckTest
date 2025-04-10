@@ -1,0 +1,13 @@
+{
+  "name": "ducktest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No test specified\" ",
+    "build": "echo \"Nothing to build just now.\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
