@@ -1,36 +1,34 @@
-const ducks = [
-    "🦆", "🦢", "🦩", "🦦", "🦔"
-];
+// Import Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-// Firebase configuration and initialization
+// Your Firebase config
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBez8JCksrF1tqCS1HptDg2yH__xNhjEFc",
+  authDomain: "ducktest-89989.firebaseapp.com",
+  projectId: "ducktest-89989",
+  storageBucket: "ducktest-89989.firebasestorage.app",
+  messagingSenderId: "316320168974",
+  appId: "1:316320168974:web:def981bc5df58d396e505f",
+  measurementId: "G-H1GN1CJTCJ"
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-const analytics = firebase.getAnalytics(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const counterRef = ref(db, 'counter');
 
-// Add ducks to the page
-const duckContainer = document.getElementById('duck-container');
+const counterDisplay = document.getElementById('counter');
+const incrementButton = document.getElementById('increment');
 
-function addDuck() {
-    const duck = ducks[Math.floor(Math.random() * ducks.length)];
-    const duckDiv = document.createElement('div');
-    duckDiv.classList.add('duck');
-    duckDiv.innerHTML = duck;
-    duckDiv.style.position = 'absolute';
-    duckDiv.style.top = `${Math.random() * 90}%`;
-    duckDiv.style.left = `${Math.random() * 90}%`;
-    duckDiv.style.fontSize = `${Math.random() * 30 + 20}px`;
-    duckDiv.style.animation = 'fly 5s infinite linear';
-    duckContainer.appendChild(duckDiv);
-}
+// Listen for real-time updates
+onValue(counterRef, (snapshot) => {
+    const value = snapshot.val();
+    counterDisplay.textContent = value !== null ? value : 0;
+});
 
-document.getElementById('actionButton').addEventListener('click', () => {
-    addDuck();
+// Update counter on button click
+incrementButton.addEventListener('click', () => {
+    const newValue = parseInt(counterDisplay.textContent) + 1;
+    set(counterRef, newValue);
 });
