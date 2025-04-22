@@ -30,5 +30,9 @@ onValue(counterRef, (snapshot) => {
 // Update counter on button click
 incrementButton.addEventListener('click', () => {
     const newValue = parseInt(counterDisplay.textContent) + 1;
-    set(counterRef, newValue);
+    set(counterRef, newValue)
+        .then(() => console.log('Counter updated to', newValue))
+        .catch((error) => console.error('Failed to update counter:', error));
 });
+
+
