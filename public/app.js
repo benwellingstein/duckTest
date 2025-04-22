@@ -7,6 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBez8JCksrF1tqCS1HptDg2yH__xNhjEFc",
   authDomain: "ducktest-89989.firebaseapp.com",
   projectId: "ducktest-89989",
+  databaseURL: "https://ducktest-89989-default-rtdb.europe-west1.firebasedatabase.app",
   storageBucket: "ducktest-89989.firebasestorage.app",
   messagingSenderId: "316320168974",
   appId: "1:316320168974:web:def981bc5df58d396e505f",
