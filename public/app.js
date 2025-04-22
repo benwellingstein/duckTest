@@ -14,17 +14,19 @@ const firebaseConfig = {
   measurementId: "G-H1GN1CJTCJ"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const counterRef = ref(db, 'counter');
 
 const counterDisplay = document.getElementById('counter');
 const incrementButton = document.getElementById('increment');
+const loader = document.getElementById('loading');
 
 // Listen for real-time updates
 onValue(counterRef, (snapshot) => {
     const value = snapshot.val();
+    loader.style.display = 'none';
+    counterDisplay.classList.remove('hidden');
     counterDisplay.textContent = value !== null ? value : 0;
 });
 
@@ -35,5 +37,3 @@ incrementButton.addEventListener('click', () => {
         .then(() => console.log('Counter updated to', newValue))
         .catch((error) => console.error('Failed to update counter:', error));
 });
-
-
