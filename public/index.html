@@ -15,7 +15,7 @@
       font-family: sans-serif;
     }
     #accordion {
-      width: 300px;
+      width: 100vw;
       height: 300px;
       background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.britannica.com%2F34%2F150934-050-AB388AF8%2FPiano-accordion.jpg&f=1&nofb=1&ipt=03dd73b19345f310e21dac2e0f967290f01782506d909842d810c18df9e08d18') center/cover no-repeat;
       display: flex;
@@ -57,12 +57,12 @@
         const expandNote = document.getElementById(`expand${note + 1}`);
         expandNote.currentTime = 0;
         expandNote.play();
-        accordion.style.transform = 'scale(1.1)';
+        accordion.style.transform = 'scale(1.05)';
       } else if (newWidth < lastWidth) {
         const shrinkNote = document.getElementById(`shrink${note + 1}`);
         shrinkNote.currentTime = 0;
         shrinkNote.play();
-        accordion.style.transform = 'scale(0.9)';
+        accordion.style.transform = 'scale(0.95)';
       }
 
       setTimeout(() => {
