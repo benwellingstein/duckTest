@@ -43,6 +43,7 @@ button {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(79, 70, 229, 0.5);
     transition: all 0.2s ease;
+    touch-action: manipulation;
 }
 
 button:hover {
