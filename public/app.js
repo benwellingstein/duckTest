@@ -21,13 +21,21 @@ const counterRef = ref(db, 'counter');
 const counterDisplay = document.getElementById('counter');
 const incrementButton = document.getElementById('increment');
 const loader = document.getElementById('loading');
+const wowSound = new Audio('sounds/wow.mp3')
 
+let lastValue = null;
 // Listen for real-time updates
 onValue(counterRef, (snapshot) => {
     const value = snapshot.val();
+
     loader.style.display = 'none';
     counterDisplay.classList.remove('hidden');
     counterDisplay.textContent = value !== null ? value : 0;
+
+    if (value !== lastValue && value % 10 === 0 && value !== 0) {
+        wowSound.play();
+    }
+    lastValue = value;
 });
 
 // Update counter on button click
