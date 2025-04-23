@@ -84,6 +84,6 @@ button:hover {
     transform: scale(1.5) rotate(20deg);
 }
 
-.hidden {
+.star.hidden {
     display: none;
 }
