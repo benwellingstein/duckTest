@@ -34,6 +34,14 @@ onValue(counterRef, (snapshot) => {
 
     if (value !== lastValue && value % 10 === 0 && value !== 0) {
         wowSound.play();
+
+        star.classList.remove('hidden');
+        star.classList.add('show');
+
+        setTimeout(() => {
+            star.classList.remove('show');
+            star.classList.add('hidden');
+        }, 1000);
     }
     lastValue = value;
 });
