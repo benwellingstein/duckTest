@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "ducktest-89989"
-  }
+  },
+  "targets": {
+    "ducktest-89989": {
+      "hosting": {
+        "ducktest": [
+          "ducktest-89989"
+        ],
+        "accordion-master": [
+          "accordion-master"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
