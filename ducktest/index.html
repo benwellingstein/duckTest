@@ -5,31 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accordion Window</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      height: 100%;
+      height: 100vh;
       background: radial-gradient(circle at center, #f9f6f2, #d7ccc8);
-      font-family: sans-serif;
-      overflow: hidden;
-    }
-    #accordion {
-      width: 100vw;
-      height: auto;
-      max-height: 100vh;
-      object-fit: contain;
-    }
-    #wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      font-family: sans-serif;
+    }
+    #accordion {
+      width: 100vw;
+      height: 300px;
+      background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.britannica.com%2F34%2F150934-050-AB388AF8%2FPiano-accordion.jpg&f=1&nofb=1&ipt=03dd73b19345f310e21dac2e0f967290f01782506d909842d810c18df9e08d18') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
     }
   </style>
 </head>
 <body>
-  <div id="wrapper">
-    <img id="accordion" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.britannica.com%2F34%2F150934-050-AB388AF8%2FPiano-accordion.jpg&f=1&nofb=1&ipt=03dd73b19345f310e21dac2e0f967290f01782506d909842d810c18df9e08d18" alt="Accordion" />
-  </div>
+  <div id="accordion"></div>
 
   <audio id="expand1" src="http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_shoot.wav"></audio>
   <audio id="expand2" src="http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_shoot.wav"></audio>
