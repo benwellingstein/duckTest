@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accordion Window</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: radial-gradient(circle at center, #f9f6f2, #d7ccc8);
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    #accordion {
+      width: 100vw;
+      height: auto;
+      max-height: 100vh;
+      object-fit: contain;
+    }
+    #wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <img id="accordion" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.britannica.com%2F34%2F150934-050-AB388AF8%2FPiano-accordion.jpg&f=1&nofb=1&ipt=03dd73b19345f310e21dac2e0f967290f01782506d909842d810c18df9e08d18" alt="Accordion" />
+  </div>
+
+  <audio id="expand1" src="http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_shoot.wav"></audio>
+  <audio id="expand2" src="http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_shoot.wav"></audio>
+  <audio id="expand3" src="http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_shoot.wav"></audio>
+  <audio id="shrink1" src="http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav"></audio>
+  <audio id="shrink2" src="http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav"></audio>
+  <audio id="shrink3" src="http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav"></audio>
+
+  <script>
+    let lastWidth = window.innerWidth;
+
+    const getNote = (delta) => {
+      if (delta > 150) return 2;
+      if (delta > 50) return 1;
+      return 0;
+    };
+
+    window.addEventListener('resize', () => {
+      const newWidth = window.innerWidth;
+      const delta = Math.abs(newWidth - lastWidth);
+      const note = getNote(delta);
+      const accordion = document.getElementById('accordion');
+
+      if (newWidth > lastWidth) {
+        const expandNote = document.getElementById(`expand${note + 1}`);
+        expandNote.currentTime = 0;
+        expandNote.play();
+        accordion.style.transform = 'scale(1.05)';
+      } else if (newWidth < lastWidth) {
+        const shrinkNote = document.getElementById(`shrink${note + 1}`);
+        shrinkNote.currentTime = 0;
+        shrinkNote.play();
+        accordion.style.transform = 'scale(0.95)';
+      }
+
+      setTimeout(() => {
+        accordion.style.transform = 'scale(1)';
+      }, 300);
+
+      lastWidth = newWidth;
+    });
+  </script>
+</body>
+</html>
